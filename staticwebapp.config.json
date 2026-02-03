@@ -1,0 +1,54 @@
+{
+  "routes": [
+    {
+      "route": "/doctor-portal",
+      "rewrite": "/doctor-portal/index.html"
+    },
+    {
+      "route": "/doctor-portal/*",
+      "rewrite": "/doctor-portal/index.html"
+    },
+    {
+      "route": "/recommend",
+      "rewrite": "/recommend/index.html"
+    },
+    {
+      "route": "/recommend/*",
+      "rewrite": "/recommend/index.html"
+    },
+    {
+      "route": "/api",
+      "rewrite": "/api/index.html"
+    },
+    {
+      "route": "/support",
+      "rewrite": "/support/index.html"
+    },
+    {
+      "route": "/status",
+      "rewrite": "/status/index.html"
+    },
+    {
+      "route": "/privacy",
+      "rewrite": "/privacy/index.html"
+    },
+    {
+      "route": "/terms",
+      "rewrite": "/terms/index.html"
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/assets/*", "/*.{css,js,png,jpg,svg,ico,json}"]
+  },
+  "globalHeaders": {
+    "X-Frame-Options": "DENY",
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "camera=(), microphone=(), geolocation=()"
+  },
+  "mimeTypes": {
+    ".json": "application/json",
+    ".woff2": "font/woff2"
+  }
+}

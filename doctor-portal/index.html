@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Portal Documentation | Terprint</title>
+    <meta name="description" content="Complete documentation for Terprint Doctor Portal - MMJ physician tools for patient management, treatment planning, and OMMU compliance.">
+    <link rel="canonical" href="https://docs.terprint.com/doctor-portal" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Terprint Doctor Portal Documentation">
+    <meta property="og:description" content="MMJ physician tools for patient management and treatment planning">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://docs.terprint.com/doctor-portal">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LEP2NFBVV3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LEP2NFBVV3');
+    </script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'terprint-green': '#10b981',
+                        'terprint-dark': '#064e3b',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center">
+                        <span class="text-2xl font-bold text-terprint-dark">Terprint</span>
+                        <span class="ml-2 text-sm text-gray-500">Docs</span>
+                    </a>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="/doctor-portal" class="text-terprint-green font-medium">Doctor Portal</a>
+                    <a href="/recommend" class="text-gray-600 hover:text-terprint-green transition">AI Recommender</a>
+                    <a href="/api" class="text-gray-600 hover:text-terprint-green transition">API Reference</a>
+                    <a href="https://support.terprint.com" class="text-gray-600 hover:text-terprint-green transition">Support</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white border-r min-h-screen p-6 hidden lg:block">
+            <nav class="space-y-6">
+                <div>
+                    <h3 class="font-semibold text-gray-900 mb-3">Getting Started</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#overview" class="hover:text-terprint-green transition">Overview</a></li>
+                        <li><a href="#registration" class="hover:text-terprint-green transition">Registration</a></li>
+                        <li><a href="#authentication" class="hover:text-terprint-green transition">Authentication</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-900 mb-3">Features</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#patient-management" class="hover:text-terprint-green transition">Patient Management</a></li>
+                        <li><a href="#treatment-planning" class="hover:text-terprint-green transition">Treatment Planning</a></li>
+                        <li><a href="#product-insights" class="hover:text-terprint-green transition">Product Insights</a></li>
+                        <li><a href="#compliance" class="hover:text-terprint-green transition">OMMU Compliance</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-900 mb-3">Integration</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#api-access" class="hover:text-terprint-green transition">API Access</a></li>
+                        <li><a href="#webhooks" class="hover:text-terprint-green transition">Webhooks</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-8 max-w-4xl">
+            <!-- Header -->
+            <div class="mb-8">
+                <div class="flex items-center space-x-2 text-sm text-gray-500 mb-2">
+                    <a href="/" class="hover:text-terprint-green">Docs</a>
+                    <span>/</span>
+                    <span>Doctor Portal</span>
+                </div>
+                <h1 class="text-4xl font-bold text-gray-900 mb-4">Terprint Doctor Portal</h1>
+                <p class="text-xl text-gray-600">Comprehensive tools for MMJ physicians to manage patients, plan treatments, and access real-time cannabis product intelligence.</p>
+            </div>
+
+            <!-- Overview Section -->
+            <section id="overview" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Overview</h2>
+                <div class="prose prose-lg text-gray-600">
+                    <p>The Terprint Doctor Portal is designed specifically for medical marijuana physicians in Florida. It provides a comprehensive suite of tools to help physicians:</p>
+                    <ul class="list-disc pl-6 space-y-2 mt-4">
+                        <li>Access real-time dispensary inventory and product information</li>
+                        <li>View detailed terpene and cannabinoid profiles for all Florida MMJ products</li>
+                        <li>Make data-driven treatment recommendations based on patient conditions</li>
+                        <li>Stay compliant with OMMU regulations</li>
+                        <li>Track patient outcomes and adjust treatment plans</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Registration Section -->
+            <section id="registration" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Registration</h2>
+                <div class="bg-white rounded-lg border p-6">
+                    <h3 class="font-semibold text-lg mb-3">Requirements</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-600">
+                        <li>Active Florida medical license</li>
+                        <li>OMMU physician registration number</li>
+                        <li>DEA number (if applicable)</li>
+                        <li>Practice NPI number</li>
+                    </ul>
+                    
+                    <h3 class="font-semibold text-lg mt-6 mb-3">Registration Process</h3>
+                    <ol class="list-decimal pl-6 space-y-2 text-gray-600">
+                        <li>Visit <a href="https://doctor.terprint.com" class="text-terprint-green hover:underline">doctor.terprint.com</a> and click "Register"</li>
+                        <li>Complete the physician verification form</li>
+                        <li>Upload required documentation</li>
+                        <li>Await verification (typically 24-48 hours)</li>
+                        <li>Receive confirmation email with login credentials</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- Authentication Section -->
+            <section id="authentication" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Authentication</h2>
+                <div class="prose prose-lg text-gray-600">
+                    <p>The Doctor Portal uses Microsoft Entra ID (Azure AD) for secure authentication. This provides:</p>
+                    <ul class="list-disc pl-6 space-y-2 mt-4">
+                        <li>Single sign-on (SSO) capability</li>
+                        <li>Multi-factor authentication (MFA)</li>
+                        <li>HIPAA-compliant session management</li>
+                        <li>Automatic session timeout for security</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Patient Management Section -->
+            <section id="patient-management" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Patient Management</h2>
+                <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
+                    <p class="text-blue-700"><strong>Note:</strong> Patient data is stored in compliance with HIPAA regulations and Florida state law.</p>
+                </div>
+                <div class="prose prose-lg text-gray-600">
+                    <p>The patient management module allows physicians to:</p>
+                    <ul class="list-disc pl-6 space-y-2 mt-4">
+                        <li>View patient treatment history</li>
+                        <li>Track consumption patterns and product preferences</li>
+                        <li>Document treatment outcomes</li>
+                        <li>Generate compliance reports</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Treatment Planning Section -->
+            <section id="treatment-planning" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Treatment Planning</h2>
+                <div class="prose prose-lg text-gray-600">
+                    <p>The AI-powered treatment planning tools help physicians make informed recommendations:</p>
+                    
+                    <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Condition-Based Recommendations</h3>
+                    <p>Enter patient conditions and symptoms to receive AI-generated product recommendations based on:</p>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li>Terpene profiles optimized for specific conditions</li>
+                        <li>THC/CBD ratios appropriate for patient tolerance</li>
+                        <li>Product formats (flower, concentrate, edible, topical)</li>
+                        <li>Current dispensary availability</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Product Insights Section -->
+            <section id="product-insights" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Product Insights</h2>
+                <div class="prose prose-lg text-gray-600">
+                    <p>Access comprehensive data on all Florida MMJ products:</p>
+                    <ul class="list-disc pl-6 space-y-2 mt-4">
+                        <li><strong>COA Data:</strong> Certificate of Analysis data for every batch</li>
+                        <li><strong>Terpene Profiles:</strong> Detailed breakdown of dominant terpenes</li>
+                        <li><strong>Cannabinoid Content:</strong> THC, CBD, CBG, CBN percentages</li>
+                        <li><strong>Price Comparison:</strong> Compare pricing across dispensaries</li>
+                        <li><strong>Availability:</strong> Real-time stock levels at nearby locations</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- OMMU Compliance Section -->
+            <section id="compliance" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">OMMU Compliance</h2>
+                <div class="prose prose-lg text-gray-600">
+                    <p>Stay compliant with Florida's Office of Medical Marijuana Use regulations:</p>
+                    <ul class="list-disc pl-6 space-y-2 mt-4">
+                        <li>Automatic tracking of patient milligram limits</li>
+                        <li>Route-of-administration compliance monitoring</li>
+                        <li>Certification renewal reminders</li>
+                        <li>Audit-ready reporting tools</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- API Access Section -->
+            <section id="api-access" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">API Access</h2>
+                <div class="bg-gray-900 rounded-lg p-6 mb-4">
+                    <pre class="text-green-400 text-sm overflow-x-auto"><code>GET /api/v1/products?condition=anxiety&limit=10
+Authorization: Bearer {your_api_token}
+
+Response:
+{
+  "products": [
+    {
+      "name": "Blue Dream",
+      "dispensary": "Trulieve",
+      "thc": 22.5,
+      "cbd": 0.8,
+      "terpenes": {
+        "myrcene": 0.45,
+        "limonene": 0.32,
+        "pinene": 0.18
+      }
+    }
+  ]
+}</code></pre>
+                </div>
+                <p class="text-gray-600">For full API documentation, visit the <a href="/api" class="text-terprint-green hover:underline">API Reference</a>.</p>
+            </section>
+
+            <!-- Support CTA -->
+            <section class="bg-terprint-green rounded-xl p-8 text-white">
+                <h2 class="text-2xl font-bold mb-4">Need Help?</h2>
+                <p class="mb-6">Our support team is available to assist with any questions about the Doctor Portal.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="https://support.terprint.com" class="bg-white text-terprint-dark px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">Contact Support</a>
+                    <a href="mailto:support@terprint.com" class="border border-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition">Email: support@terprint.com</a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 mt-16">
+        <div class="max-w-7xl mx-auto px-4 text-center text-gray-400">
+            <p>© 2026 Acidni LLC. All rights reserved. | <a href="https://terprint.com/privacy" class="hover:text-white">Privacy Policy</a> | <a href="https://terprint.com/terms" class="hover:text-white">Terms</a></p>
+        </div>
+    </footer>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "Terprint Doctor Portal Documentation",
+        "description": "Complete documentation for MMJ physicians using the Terprint Doctor Portal",
+        "author": {
+            "@type": "Organization",
+            "name": "Acidni LLC"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Acidni LLC",
+            "url": "https://www.acidni.com"
+        },
+        "datePublished": "2026-01-01",
+        "dateModified": "2026-02-03"
+    }
+    </script>
+</body>
+</html>

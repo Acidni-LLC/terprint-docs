@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Recommender API Documentation | Terprint</title>
+    <meta name="description" content="API documentation for Terprint AI Recommender - integrate AI-powered cannabis strain recommendations into your applications.">
+    <link rel="canonical" href="https://docs.terprint.com/recommend" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Terprint AI Recommender API Documentation">
+    <meta property="og:description" content="Integrate AI-powered cannabis strain recommendations into your applications">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://docs.terprint.com/recommend">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LEP2NFBVV3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LEP2NFBVV3');
+    </script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'terprint-green': '#10b981',
+                        'terprint-dark': '#064e3b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .code-block { background: #1e293b; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center">
+                        <span class="text-2xl font-bold text-terprint-dark">Terprint</span>
+                        <span class="ml-2 text-sm text-gray-500">Docs</span>
+                    </a>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="/doctor-portal" class="text-gray-600 hover:text-terprint-green transition">Doctor Portal</a>
+                    <a href="/recommend" class="text-terprint-green font-medium">AI Recommender</a>
+                    <a href="/api" class="text-gray-600 hover:text-terprint-green transition">API Reference</a>
+                    <a href="https://support.terprint.com" class="text-gray-600 hover:text-terprint-green transition">Support</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white border-r min-h-screen p-6 hidden lg:block">
+            <nav class="space-y-6">
+                <div>
+                    <h3 class="font-semibold text-gray-900 mb-3">Overview</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#introduction" class="hover:text-terprint-green transition">Introduction</a></li>
+                        <li><a href="#authentication" class="hover:text-terprint-green transition">Authentication</a></li>
+                        <li><a href="#rate-limits" class="hover:text-terprint-green transition">Rate Limits</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-900 mb-3">Endpoints</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#get-recommendations" class="hover:text-terprint-green transition">Get Recommendations</a></li>
+                        <li><a href="#strain-details" class="hover:text-terprint-green transition">Strain Details</a></li>
+                        <li><a href="#similar-strains" class="hover:text-terprint-green transition">Similar Strains</a></li>
+                        <li><a href="#terpene-search" class="hover:text-terprint-green transition">Terpene Search</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-900 mb-3">SDKs</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#sdk-python" class="hover:text-terprint-green transition">Python SDK</a></li>
+                        <li><a href="#sdk-javascript" class="hover:text-terprint-green transition">JavaScript SDK</a></li>
+                        <li><a href="#sdk-dotnet" class="hover:text-terprint-green transition">.NET SDK</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-8 max-w-4xl">
+            <!-- Header -->
+            <div class="mb-8">
+                <div class="flex items-center space-x-2 text-sm text-gray-500 mb-2">
+                    <a href="/" class="hover:text-terprint-green">Docs</a>
+                    <span>/</span>
+                    <span>AI Recommender</span>
+                </div>
+                <h1 class="text-4xl font-bold text-gray-900 mb-4">AI Recommender API</h1>
+                <p class="text-xl text-gray-600">Integrate AI-powered strain recommendations into your cannabis applications using our REST API.</p>
+            </div>
+
+            <!-- Introduction Section -->
+            <section id="introduction" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Introduction</h2>
+                <div class="prose prose-lg text-gray-600">
+                    <p>The Terprint AI Recommender API provides intelligent cannabis strain recommendations based on:</p>
+                    <ul class="list-disc pl-6 space-y-2 mt-4">
+                        <li><strong>Terpene Profiles:</strong> Match products by terpene composition</li>
+                        <li><strong>Desired Effects:</strong> Relaxation, focus, creativity, pain relief</li>
+                        <li><strong>Medical Conditions:</strong> Anxiety, insomnia, inflammation, etc.</li>
+                        <li><strong>User Preferences:</strong> THC tolerance, preferred formats, budget</li>
+                        <li><strong>Real-time Availability:</strong> Filter by what's in stock</li>
+                    </ul>
+                </div>
+                
+                <div class="mt-6 p-4 bg-green-50 border-l-4 border-green-400 rounded">
+                    <p class="text-green-800"><strong>Base URL:</strong> <code class="bg-green-100 px-2 py-1 rounded">https://apim-terprint-dev.azure-api.net/recommend</code></p>
+                </div>
+            </section>
+
+            <!-- Authentication Section -->
+            <section id="authentication" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Authentication</h2>
+                <div class="prose prose-lg text-gray-600 mb-6">
+                    <p>All API requests require authentication using an API key. Include your key in the request header:</p>
+                </div>
+                
+                <div class="code-block rounded-lg p-6 mb-4 overflow-x-auto">
+                    <pre class="text-green-400 text-sm"><code>curl -X GET "https://apim-terprint-dev.azure-api.net/recommend/api/recommendations" \
+  -H "Ocp-Apim-Subscription-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json"</code></pre>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-400 p-4">
+                    <p class="text-blue-700"><strong>Get your API key:</strong> Sign up at the <a href="https://apim-terprint-dev.developer.azure-api.net" class="underline hover:no-underline">Developer Portal</a> to receive your subscription key.</p>
+                </div>
+            </section>
+
+            <!-- Rate Limits Section -->
+            <section id="rate-limits" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Rate Limits</h2>
+                <div class="bg-white rounded-lg border overflow-hidden">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Plan</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Requests/min</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Requests/day</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Free</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">10</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">100</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Starter</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">60</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">5,000</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Professional</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">300</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">50,000</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Enterprise</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Unlimited</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Unlimited</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Get Recommendations Endpoint -->
+            <section id="get-recommendations" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Get Recommendations</h2>
+                <div class="flex items-center space-x-3 mb-4">
+                    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">POST</span>
+                    <code class="text-gray-600">/api/recommendations</code>
+                </div>
+                
+                <p class="text-gray-600 mb-6">Get AI-powered strain recommendations based on user preferences and conditions.</p>
+                
+                <h3 class="font-semibold text-lg mb-3">Request Body</h3>
+                <div class="code-block rounded-lg p-6 mb-4 overflow-x-auto">
+                    <pre class="text-green-400 text-sm"><code>{
+  "effects": ["relaxation", "pain_relief"],
+  "conditions": ["anxiety", "insomnia"],
+  "terpenes": {
+    "preferred": ["myrcene", "linalool"],
+    "avoid": ["pinene"]
+  },
+  "thc_range": {
+    "min": 15,
+    "max": 25
+  },
+  "cbd_min": 0.5,
+  "format": ["flower", "concentrate"],
+  "dispensary": "trulieve",
+  "limit": 10,
+  "include_out_of_stock": false
+}</code></pre>
+                </div>
+                
+                <h3 class="font-semibold text-lg mb-3">Response</h3>
+                <div class="code-block rounded-lg p-6 mb-4 overflow-x-auto">
+                    <pre class="text-green-400 text-sm"><code>{
+  "success": true,
+  "recommendations": [
+    {
+      "strain_name": "Granddaddy Purple",
+      "dispensary": "Trulieve",
+      "location": "Orlando - Colonial",
+      "thc": 21.5,
+      "cbd": 0.8,
+      "terpenes": {
+        "myrcene": 0.52,
+        "linalool": 0.28,
+        "caryophyllene": 0.15
+      },
+      "price": 45.00,
+      "format": "Flower - 3.5g",
+      "match_score": 0.94,
+      "match_reasons": [
+        "High myrcene content (0.52%)",
+        "Excellent for relaxation and sleep",
+        "THC in preferred range"
+      ],
+      "in_stock": true,
+      "batch_id": "FL-TL-GDP-2026-0142"
+    }
+  ],
+  "total_matches": 47,
+  "filters_applied": {
+    "effects": 2,
+    "conditions": 2,
+    "terpene_preferences": 3
+  }
+}</code></pre>
+                </div>
+            </section>
+
+            <!-- Strain Details Endpoint -->
+            <section id="strain-details" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Strain Details</h2>
+                <div class="flex items-center space-x-3 mb-4">
+                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">GET</span>
+                    <code class="text-gray-600">/api/strains/{strain_id}</code>
+                </div>
+                
+                <p class="text-gray-600 mb-6">Retrieve detailed information about a specific strain including full terpene profile, effects, and availability.</p>
+                
+                <div class="code-block rounded-lg p-6 overflow-x-auto">
+                    <pre class="text-green-400 text-sm"><code>GET /api/strains/granddaddy-purple
+
+Response:
+{
+  "id": "granddaddy-purple",
+  "name": "Granddaddy Purple",
+  "genetics": "Purple Urkle x Big Bud",
+  "type": "Indica",
+  "average_thc": 20.5,
+  "average_cbd": 0.7,
+  "terpene_profile": {
+    "myrcene": 0.48,
+    "linalool": 0.25,
+    "caryophyllene": 0.18,
+    "pinene": 0.12,
+    "limonene": 0.08
+  },
+  "effects": ["relaxed", "sleepy", "happy", "euphoric"],
+  "medical_uses": ["insomnia", "pain", "stress", "anxiety"],
+  "flavors": ["grape", "berry", "sweet"],
+  "availability": [
+    {
+      "dispensary": "Trulieve",
+      "locations_in_stock": 42,
+      "price_range": "$40-$55"
+    }
+  ]
+}</code></pre>
+                </div>
+            </section>
+
+            <!-- Similar Strains Endpoint -->
+            <section id="similar-strains" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Similar Strains</h2>
+                <div class="flex items-center space-x-3 mb-4">
+                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">GET</span>
+                    <code class="text-gray-600">/api/strains/{strain_id}/similar</code>
+                </div>
+                
+                <p class="text-gray-600 mb-6">Find strains with similar terpene profiles and effects using vector similarity search.</p>
+            </section>
+
+            <!-- Terpene Search Endpoint -->
+            <section id="terpene-search" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Terpene Search</h2>
+                <div class="flex items-center space-x-3 mb-4">
+                    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">POST</span>
+                    <code class="text-gray-600">/api/terpenes/search</code>
+                </div>
+                
+                <p class="text-gray-600 mb-6">Search for products by specific terpene composition targets.</p>
+            </section>
+
+            <!-- Python SDK -->
+            <section id="sdk-python" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Python SDK</h2>
+                
+                <h3 class="font-semibold text-lg mb-3">Installation</h3>
+                <div class="code-block rounded-lg p-6 mb-4 overflow-x-auto">
+                    <pre class="text-green-400 text-sm"><code>pip install terprint-sdk</code></pre>
+                </div>
+                
+                <h3 class="font-semibold text-lg mb-3">Usage</h3>
+                <div class="code-block rounded-lg p-6 overflow-x-auto">
+                    <pre class="text-green-400 text-sm"><code>from terprint import TerprintClient
+
+client = TerprintClient(api_key="your_api_key")
+
+# Get recommendations
+recommendations = client.recommend(
+    effects=["relaxation", "pain_relief"],
+    thc_range=(15, 25),
+    limit=10
+)
+
+for rec in recommendations:
+    print(f"{rec.strain_name} - {rec.match_score:.0%} match")
+    print(f"  THC: {rec.thc}% | Price: ${rec.price}")</code></pre>
+                </div>
+                
+                <p class="mt-4 text-gray-600">
+                    <a href="https://github.com/Acidni-LLC/terprint-sdk-python" class="text-terprint-green hover:underline">View on GitHub →</a>
+                </p>
+            </section>
+
+            <!-- JavaScript SDK -->
+            <section id="sdk-javascript" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">JavaScript SDK</h2>
+                
+                <h3 class="font-semibold text-lg mb-3">Installation</h3>
+                <div class="code-block rounded-lg p-6 mb-4 overflow-x-auto">
+                    <pre class="text-green-400 text-sm"><code>npm install @terprint/sdk</code></pre>
+                </div>
+                
+                <h3 class="font-semibold text-lg mb-3">Usage</h3>
+                <div class="code-block rounded-lg p-6 overflow-x-auto">
+                    <pre class="text-green-400 text-sm"><code>import { TerprintClient } from '@terprint/sdk';
+
+const client = new TerprintClient({ apiKey: 'your_api_key' });
+
+const recommendations = await client.recommend({
+  effects: ['relaxation', 'pain_relief'],
+  thcRange: { min: 15, max: 25 },
+  limit: 10
+});
+
+recommendations.forEach(rec => {
+  console.log(`${rec.strainName} - ${rec.matchScore}% match`);
+});</code></pre>
+                </div>
+            </section>
+
+            <!-- .NET SDK -->
+            <section id="sdk-dotnet" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">.NET SDK</h2>
+                
+                <h3 class="font-semibold text-lg mb-3">Installation</h3>
+                <div class="code-block rounded-lg p-6 mb-4 overflow-x-auto">
+                    <pre class="text-green-400 text-sm"><code>dotnet add package Terprint.SDK</code></pre>
+                </div>
+                
+                <h3 class="font-semibold text-lg mb-3">Usage</h3>
+                <div class="code-block rounded-lg p-6 overflow-x-auto">
+                    <pre class="text-green-400 text-sm"><code>using Terprint.SDK;
+
+var client = new TerprintClient("your_api_key");
+
+var recommendations = await client.RecommendAsync(new RecommendRequest
+{
+    Effects = new[] { "relaxation", "pain_relief" },
+    ThcRange = new Range(15, 25),
+    Limit = 10
+});
+
+foreach (var rec in recommendations)
+{
+    Console.WriteLine($"{rec.StrainName} - {rec.MatchScore:P0} match");
+}</code></pre>
+                </div>
+            </section>
+
+            <!-- Support CTA -->
+            <section class="bg-terprint-green rounded-xl p-8 text-white">
+                <h2 class="text-2xl font-bold mb-4">Need Help?</h2>
+                <p class="mb-6">Our developer support team is here to help you integrate the AI Recommender API.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="https://support.terprint.com" class="bg-white text-terprint-dark px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">Contact Support</a>
+                    <a href="https://apim-terprint-dev.developer.azure-api.net" class="border border-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition">Developer Portal</a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 mt-16">
+        <div class="max-w-7xl mx-auto px-4 text-center text-gray-400">
+            <p>© 2026 Acidni LLC. All rights reserved. | <a href="https://terprint.com/privacy" class="hover:text-white">Privacy Policy</a> | <a href="https://terprint.com/terms" class="hover:text-white">Terms</a></p>
+        </div>
+    </footer>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "Terprint AI Recommender API Documentation",
+        "description": "API documentation for integrating AI-powered cannabis strain recommendations",
+        "author": {
+            "@type": "Organization",
+            "name": "Acidni LLC"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Acidni LLC"
+        },
+        "datePublished": "2026-01-01",
+        "dateModified": "2026-02-03"
+    }
+    </script>
+</body>
+</html>

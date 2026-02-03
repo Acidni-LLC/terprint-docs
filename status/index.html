@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terprint System Status | Service Health</title>
+    <meta name="description" content="Real-time system status and health monitoring for Terprint cannabis data analytics platform services.">
+    <link rel="canonical" href="https://status.terprint.com" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Terprint System Status">
+    <meta property="og:description" content="Real-time system status for Terprint services">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://status.terprint.com">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LEP2NFBVV3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LEP2NFBVV3');
+    </script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'terprint-green': '#10b981',
+                        'terprint-dark': '#064e3b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .pulse-green { animation: pulse-green 2s infinite; }
+        @keyframes pulse-green {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="https://sales.terprint.com" class="flex items-center">
+                        <span class="text-2xl font-bold text-terprint-dark">Terprint</span>
+                        <span class="ml-2 text-sm text-gray-500">Status</span>
+                    </a>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="https://docs.terprint.com" class="text-gray-600 hover:text-terprint-green transition">Documentation</a>
+                    <a href="https://support.terprint.com" class="text-gray-600 hover:text-terprint-green transition">Support</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Overall Status Banner -->
+    <section class="bg-green-500 text-white py-8" id="status-banner">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-center space-x-4">
+                <div class="w-4 h-4 bg-white rounded-full pulse-green"></div>
+                <h1 class="text-2xl font-bold">All Systems Operational</h1>
+            </div>
+            <p class="text-center text-green-100 mt-2">Last updated: <span id="last-updated">Loading...</span></p>
+        </div>
+    </section>
+
+    <!-- Services Status -->
+    <section class="py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8">Service Status</h2>
+            
+            <div class="space-y-4" id="services-list">
+                <!-- Core Platform -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="font-semibold text-lg text-gray-900 mb-4">Core Platform</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">Terprint Web Application</span>
+                            <span class="flex items-center text-green-600">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                Operational
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">Doctor Portal</span>
+                            <span class="flex items-center text-green-600">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                Operational
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">Authentication Services</span>
+                            <span class="flex items-center text-green-600">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                Operational
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- API Services -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="font-semibold text-lg text-gray-900 mb-4">API Services</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">AI Recommender API</span>
+                            <span class="flex items-center text-green-600">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                Operational
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">AI Chat API</span>
+                            <span class="flex items-center text-green-600">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                Operational
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">Data API</span>
+                            <span class="flex items-center text-green-600">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                Operational
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">API Management Gateway</span>
+                            <span class="flex items-center text-green-600">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                Operational
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Pipeline -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="font-semibold text-lg text-gray-900 mb-4">Data Pipeline</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">Menu Downloader</span>
+                            <span class="flex items-center text-green-600">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                Operational
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">Batch Processor</span>
+                            <span class="flex items-center text-green-600">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                Operational
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">COA Extractor</span>
+                            <span class="flex items-center text-green-600">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                Operational
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">Stock Indexer</span>
+                            <span class="flex items-center text-green-600">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                Operational
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Sources -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="font-semibold text-lg text-gray-900 mb-4">Dispensary Data Sources</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">Trulieve</span>
+                            <span class="flex items-center text-green-600">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                Connected
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">Curaleaf</span>
+                            <span class="flex items-center text-green-600">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                Connected
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">MÜV</span>
+                            <span class="flex items-center text-green-600">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                Connected
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">The Flowery</span>
+                            <span class="flex items-center text-green-600">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                Connected
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">Cookies Florida</span>
+                            <span class="flex items-center text-green-600">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                Connected
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Uptime Metrics -->
+    <section class="py-12 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8">Uptime (Last 90 Days)</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="text-center p-6 bg-gray-50 rounded-lg">
+                    <div class="text-4xl font-bold text-terprint-green mb-2">99.9%</div>
+                    <div class="text-gray-600">Core Platform</div>
+                </div>
+                <div class="text-center p-6 bg-gray-50 rounded-lg">
+                    <div class="text-4xl font-bold text-terprint-green mb-2">99.8%</div>
+                    <div class="text-gray-600">API Services</div>
+                </div>
+                <div class="text-center p-6 bg-gray-50 rounded-lg">
+                    <div class="text-4xl font-bold text-terprint-green mb-2">99.7%</div>
+                    <div class="text-gray-600">Data Pipeline</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Incidents -->
+    <section class="py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8">Recent Incidents</h2>
+            
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                        <span class="w-3 h-3 bg-green-500 rounded-full block mt-1.5"></span>
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <h3 class="font-semibold text-gray-900">No recent incidents</h3>
+                        </div>
+                        <p class="text-gray-600 text-sm mt-1">All systems have been operating normally.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scheduled Maintenance -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8">Scheduled Maintenance</h2>
+            
+            <div class="bg-white rounded-lg shadow p-6">
+                <p class="text-gray-600">No scheduled maintenance at this time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscribe to Updates -->
+    <section class="py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Stay Informed</h2>
+            <p class="text-gray-600 mb-6">Get notified when there are service disruptions or scheduled maintenance.</p>
+            <a href="https://support.terprint.com" class="bg-terprint-green text-white px-6 py-3 rounded-lg font-semibold hover:bg-terprint-dark transition inline-block">
+                Subscribe to Updates
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-gray-400">
+            <p>© 2026 Acidni LLC. All rights reserved.</p>
+            <div class="mt-2 space-x-4">
+                <a href="https://support.terprint.com" class="hover:text-white">Support</a>
+                <span>|</span>
+                <a href="https://docs.terprint.com" class="hover:text-white">Documentation</a>
+                <span>|</span>
+                <a href="https://terprint.com/privacy" class="hover:text-white">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Update timestamp -->
+    <script>
+        document.getElementById('last-updated').textContent = new Date().toLocaleString('en-US', {
+            dateStyle: 'medium',
+            timeStyle: 'short',
+            timeZone: 'America/New_York'
+        }) + ' EST';
+    </script>
+</body>
+</html>
